@@ -7,6 +7,20 @@ import {Link} from "react-router-dom";
 
 export default function SignUp()
 {
+    // taken from the site
+    const [state, setState] = React.useState({
+        username : '',
+        password : '',
+        birthYear : 0,
+    });
+    
+    const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+    };
+
+    const { username, password, birthYear } = state;
+
+
     const header =<span>
             <br/>
             <text class = "text"  style = {{left: '50%',margin: '15em'}} >WELCOME</text>
@@ -42,9 +56,9 @@ export default function SignUp()
                         </div>
                         <br/>
                         <div className="p-field p-grid">
-                            <label htmlFor="lastname4" className="p-col-12 p-md-2">TC Kimlik No</label>
+                            <label htmlFor="lastname4" className="p-col-12 p-md-2">Birth Year</label>
                             <div className="p-col-12 p-md-10">
-                                <InputText id="lastname4" type="email"/>
+                                <InputText id="lastname4" type="text"/>
                             </div>
                         </div>
                         <div className="p-field p-grid">
@@ -70,6 +84,12 @@ export default function SignUp()
                         <br/>
                         <div className="p-field p-grid">
                             <label htmlFor="lastname4" className="p-col-12 p-md-2">Password Confirm</label>
+                            <div className="p-col-12 p-md-10">
+                                <InputText id="lastname4" type="password"/>
+                            </div>
+                        </div>
+                        <div className="p-field p-grid">
+                            <label htmlFor="lastname4" className="p-col-12 p-md-2">Click to continue.</label>
                             <div className="p-col-12 p-md-10">
                                 <InputText id="lastname4" type="password"/>
                             </div>

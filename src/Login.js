@@ -1,4 +1,4 @@
-import {Paper} from "@material-ui/core";
+import {Paper, Checkbox, FormControlLabel} from "@material-ui/core";
 import {InputText} from "primereact/inputtext";
 import {Button} from "primereact/button";
 import React from "react";
@@ -6,6 +6,17 @@ import {Link} from "react-router-dom";
 
 export default function Login()
 {
+    // taken from the site
+    const [state, setState] = React.useState({
+        admin : false,
+    });
+    
+    const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+    };
+
+    const { admin } = state;
+
     return (
         <div class = "row no-gutters" >
             <div class = "col no-gutters" style={{ height : '100vh', width : '80%' ,backgroundColor: 'white'}}>
@@ -36,6 +47,12 @@ export default function Login()
                                 <div className="p-col-12 p-md-10">
                                     <InputText type="password"  id="lastname4" />
                                 </div>
+                                <FormControlLabel
+                                    style={{marginTop : "2em"}}
+                                    control={<Checkbox checked={admin} onChange={handleChange} name="admin" />}
+                                    label="Is Admin"
+                                    labelPlacement="top"
+                                />
                                 <text style={{marginLeft: '70%',textDecorationLine: 'underline'}}>Forgot password?</text>
                             </div>
                         </div>
