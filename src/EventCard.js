@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import EventDetailModal from "./EventDetailModal";
+import { PinDropSharp } from '@material-ui/icons';
 
 const useStyles = makeStyles({
     root: {
@@ -17,6 +18,7 @@ const useStyles = makeStyles({
 
 export default function ImgMediaCard(props) {
     const classes = useStyles();
+
     const [modalShow, setModalShow] = React.useState(false);
     return (
         <Card className={classes.root}>
@@ -25,7 +27,7 @@ export default function ImgMediaCard(props) {
                     component="img"
                     alt="Contemplative Reptile"
                     height="140"
-                    image="/images/t-logo.jpg"  // !! make modular 
+                    image={props.image}  // !! make modular 
                     title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -37,7 +39,7 @@ export default function ImgMediaCard(props) {
             </CardActionArea>
             <CardActions>
                 <Button size="small" color="primary" onClick={() => setModalShow(true)}>
-                    Learn More
+                    {props.down}
                 </Button>
                 <EventDetailModal
                     title = {props.title}
@@ -46,6 +48,8 @@ export default function ImgMediaCard(props) {
                     location = {props.location}
                     leftcap ={props.leftcap}
                     show={modalShow}
+                    leftModalButton={props.leftModalButton}
+                    rightModalButton={props.lrightModalButton}
                     onHide={() => setModalShow(false)}
                 />
             </CardActions>

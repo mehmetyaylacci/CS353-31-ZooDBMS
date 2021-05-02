@@ -34,8 +34,8 @@ export default function EventDetailModal(props)  {
 
                 </div>            </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>REGISTER</Button>
-                <Button onClick={props.onHide}>CANCEL</Button>
+                <Button onClick={props.onHide}>{props.leftModalButton}</Button>
+                <Button onClick={props.onHide}>{props.leftModalButton}</Button>
             </Modal.Footer>
         </Modal>
     );

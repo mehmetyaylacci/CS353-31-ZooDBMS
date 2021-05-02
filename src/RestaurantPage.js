@@ -5,7 +5,7 @@ import {Grid, Paper} from "@material-ui/core";
 import {CardDemo} from "./CardDemo";
 import {Sidebar} from "primereact/sidebar";
 import {AppBar,Toolbar,IconButton,Typography,InputBase,fade,makeStyles} from "@material-ui/core";
-import AppBarShortSlider from "./AppBarShortSlider";
+import AppBarShort from "./AppBarShort";
 import EventCard from "./EventCard";
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -62,26 +62,24 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default class  UserHomePage extends Component
+export default class  RestaurantPage extends Component
 {
 
     constructor() {
         super();
-        let postArray = [{title: "Event2",start:"Event2 start date",end:"Event end date",location:"event2 location",leftcap:"40",type:"cons"},
-                {title: "Event3",start:"Event3 start date",end:"Event end date",location:"event3 location",leftcap:"205",type:"cons"},
-                {title: "Event4",start:"Event4 start date",end:"Event end date",location:"event4 location",leftcap:"112",type:"cons"},
-                {title: "Event5",start:"Event5 start date",end:"Event end date",location:"event5 location",leftcap:"220",type:"a"},
-                {title: "Event6",start:"Event6 start date",end:"Event end date",location:"event6 location",leftcap:"120",type:"a"}];
-
         this.state = {
+            suggestions: null,
             visibleLeft: false,
-            sliderCheck : false,
-            suggestions: postArray
+            postArray: [
+                {title: "Event2",start:"Event2 start date",end:"Event end date",location:"event2 location",leftcap:"40"},
+                {title: "Event3",start:"Event3 start date",end:"Event end date",location:"event3 location",leftcap:"205"},
+                {title: "Event4",start:"Event4 start date",end:"Event end date",location:"event4 location",leftcap:"112"},
+                {title: "Event5",start:"Event5 start date",end:"Event end date",location:"event5 location",leftcap:"220"},
+                {title: "Event6",start:"Event6 start date",end:"Event end date",location:"event6 location",leftcap:"120"},
+            ]
         };
-
         this.names = ['Audi', 'BMW', 'Fiat', 'Ford', 'Honda', 'Jaguar', 'Mercedes', 'Renault', 'Volvo'];
     }
-
     suggest(event) {
         let results = this.names.filter((names) => {
             return names.toLowerCase().startsWith(event.query.toLowerCase());
@@ -89,29 +87,16 @@ export default class  UserHomePage extends Component
 
         this.setState({ suggestions: results });
     }
-
-    sliderAction(event){
-        let answer = this.postArray.forEach((element) => {
-            if((element.type == "a" && this.state.sliderCheck) || (element.type == "cons" && !(this.state.sliderCheck))){
-                return element;
-            }
-        });
-
-        console.log(this.state.sliderCheck);
-
-        this.setState({ suggestions : answer});
-    }
-
     render() {
         return (
             <div className={"root"}>
-               <AppBarShortSlider sliderCheck = {this.sliderCheck} title = "Home Page" onChange = {this.sliderAction.bind(this)}></AppBarShortSlider>
+               <AppBarShort title = "Home Page"></AppBarShort>
 
             <div style = {{justifyContent: 'center'}}>
                 <br/>
                 <Grid container spacing = {3}>
                     {
-                        this.state.suggestions.map((post , index) =>
+                        this.state.postArray.map((post , index) =>
                             {
                                 return(
                                     <Grid item xs = {3}>
