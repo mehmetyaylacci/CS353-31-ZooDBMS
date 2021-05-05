@@ -6,7 +6,6 @@ import UserProfile from "./UserProfile";
 import UserHomePage from "./UserHomePage";
 import SignUp from "./SignUp";
 import { BrowserRouter as Router, Route, Link,Switch } from 'react-router-dom';
-import CompanyPage from "./CompanyPage";
 
 
 /*
@@ -41,9 +40,6 @@ function Routes()
           <Route path = "/signup" exact component={SignUp}></Route>
           <Route path = "/homepage" exact component={UserHomePage}></Route>
           <Route path = "/profile" exact component={UserProfile}></Route>
-            <Route path = "/companypage" exact component={CompanyPage}></Route>
-
-
 
         </Switch>
       </Router>

@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
 import {Modal, Button, Row, Col, Form} from 'react-bootstrap';
-import {GoogleMap,withScriptjs,withGoogleMap} from "react-google-maps";
-import Map from "./Map";
-
-const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default function EventDetailModal(props)  {
     return (
@@ -24,15 +20,7 @@ export default function EventDetailModal(props)  {
                 <h5 style={{marginTop:"2em"}}>Left Capacity</h5>
                 {props.leftcap}
                 <br/>
-                <h5 style={{marginTop:"2em"}}>Location</h5>
-                {props.location}
-                <div style = {{width: '50m',height: '50vh'}}>
-                    <WrappedMap mapElement = {<div style={{height: '100%'} }/>}
-                                containerElement = {<div style={{height: '100%'} }/>}
-                                loadingElement = {<div style={{height:'100%'}}/>}
-                                googleMapURL = {'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDt8my9scVVMIN2nuaYyEzPT5Wy4Ub8nK4'}/>
-
-                </div>            </Modal.Body>
+            </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>{props.leftModalButton}</Button>
                 <Button onClick={props.onHide}>{props.leftModalButton}</Button>

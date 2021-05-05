@@ -5,7 +5,7 @@ import {Grid, Paper} from "@material-ui/core";
 import {CardDemo} from "./CardDemo";
 import {Sidebar} from "primereact/sidebar";
 import {AppBar,Toolbar,IconButton,Typography,InputBase,fade,makeStyles} from "@material-ui/core";
-import AppBarShortSlider from "./AppBarShortSlider";
+import AppBarShort from "./AppBarShort";
 import EventCard from "./EventCard";
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -90,22 +90,10 @@ export default class  UserHomePage extends Component
         this.setState({ suggestions: results });
     }
 
-    sliderAction(event){
-        let answer = this.postArray.forEach((element) => {
-            if((element.type == "a" && this.state.sliderCheck) || (element.type == "cons" && !(this.state.sliderCheck))){
-                return element;
-            }
-        });
-
-        console.log(this.state.sliderCheck);
-
-        this.setState({ suggestions : answer});
-    }
-
     render() {
         return (
             <div className={"root"}>
-               <AppBarShortSlider sliderCheck = {this.sliderCheck} title = "Home Page" onChange = {this.sliderAction.bind(this)}></AppBarShortSlider>
+               <AppBarShort title = "Home Page"></AppBarShort>
 
             <div style = {{justifyContent: 'center'}}>
                 <br/>

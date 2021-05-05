@@ -2,11 +2,11 @@
 
 import React, {Component} from "react";
 import {Grid, Paper} from "@material-ui/core";
-import {CardDemo} from "./CardDemo";
+import {CardDemo} from "../CardDemo";
 import {Sidebar} from "primereact/sidebar";
 import {AppBar,Toolbar,IconButton,Typography,InputBase,fade,makeStyles} from "@material-ui/core";
-import AppBarShort from "./AppBarShort";
-import EventCard from "./EventCard";
+import AppBarShort from "../AppBarShort";
+import EventCard from "../EventCard";
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -105,6 +105,8 @@ export default class  RestaurantPage extends Component
                                                     end={post.end}
                                                     location={post.location}
                                                     leftcap={post.leftcap}
+                                                    leftModalButton="Accept"
+                                                    rightModalButton="Decline"
                                                     down="Make Reservation"
                                                     image="/images/t-logo.jpg"
                                                     />

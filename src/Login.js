@@ -9,13 +9,16 @@ export default function Login()
     // taken from the site
     const [state, setState] = React.useState({
         admin : false,
+        visitor : false,
+        keeper : false,
+        veterinarian  : false,
     });
     
     const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+        setState({ ...state, [event.target.name]: event.target.checked });
     };
 
-    const { admin } = state;
+    const { admin, visitor, keeper, veterinarian } = state;
 
     return (
         <div class = "row no-gutters" >
@@ -51,9 +54,27 @@ export default function Login()
                                     style={{marginTop : "2em"}}
                                     control={<Checkbox checked={admin} onChange={handleChange} name="admin" />}
                                     label="Is Admin"
-                                    labelPlacement="top"
+                                    labelPlacement="left"
                                 />
-                                <text style={{marginLeft: '70%',textDecorationLine: 'underline'}}>Forgot password?</text>
+                                <FormControlLabel
+                                    style={{marginTop : "2em"}}
+                                    control={<Checkbox checked={visitor} onChange={handleChange} name="visitor" />}
+                                    label="Is Visitor"
+                                    labelPlacement="left"
+                                />
+                                <FormControlLabel
+                                    style={{marginTop : "2em"}}
+                                    control={<Checkbox checked={veterinarian} onChange={handleChange} name="veterinarian" />}
+                                    label="Is Veterinarian"
+                                    labelPlacement="left"
+                                />
+                                <FormControlLabel
+                                    style={{marginTop : "2em"}}
+                                    control={<Checkbox checked={keeper} onChange={handleChange} name="keeper" />}
+                                    label="Is Keeper"
+                                    labelPlacement="left"
+                                />
+                                {/* <text style={{marginLeft: '70%',textDecorationLine: 'underline'}}>Forgot password?</text> */}
                             </div>
                         </div>
                         <Link to={"/homepage"}>
