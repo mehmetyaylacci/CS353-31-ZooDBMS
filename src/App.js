@@ -6,6 +6,7 @@ import UserProfile from "./UserProfile";
 import UserHomePage from "./UserHomePage";
 import SignUp from "./SignUp";
 import RestaurantPage from "./RestaurantPage/RestaurantPage"
+import VisitorHomePage from "./VisitorPages/VisitorHomePage"
 import { BrowserRouter as Router, Route, Link,Switch } from 'react-router-dom';
 
 
@@ -42,7 +43,7 @@ function Routes()
           <Route path = "/homepage" exact component={UserHomePage}></Route>
           <Route path = "/profile" exact component={UserProfile}></Route>
           <Route path = "/restaurant" exact component={RestaurantPage}></Route>
-          
+          <Route path = "/visitorhomepage" exact component={VisitorHomePage}></Route>
 
         </Switch>
       </Router>

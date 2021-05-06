@@ -12,13 +12,18 @@ export default function Login()
         visitor : false,
         keeper : false,
         veterinarian  : false,
+        link : "",
     });
     
     const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
+        
+        if( event.target.name == "visitor"){
+            setState({ link : "/visitorhomepage"});
+        }
     };
 
-    const { admin, visitor, keeper, veterinarian } = state;
+    const { admin, visitor, keeper, veterinarian, link } = state;
 
     return (
         <div class = "row no-gutters" >
@@ -77,7 +82,7 @@ export default function Login()
                                 {/* <text style={{marginLeft: '70%',textDecorationLine: 'underline'}}>Forgot password?</text> */}
                             </div>
                         </div>
-                        <Link to={"/homepage"}>
+                        <Link to={link}>
                              <Button style={{color: 'white',backgroundImage: 'linear-gradient(to bottom right,#8C4FB7,#3834DE)' , width : '30%',left: '41%'}} label="Sign In" className="p-button-rounded " />
                         </Link>
                         <div>
