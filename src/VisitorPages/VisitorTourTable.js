@@ -1,173 +1,121 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
+// this will be the restaurant selection page
 
-import CreateIcon from "@material-ui/icons/Create";
-import DeleteIcon from "@material-ui/icons/Delete";
-import ListAltIcon from '@material-ui/icons/ListAlt';
-import IconButton from "@material-ui/core/IconButton";
-
-const columns = [
-    { id: 'eventName', label: 'Event Name', minWidth: 170 },
-    { id: 'capacity', label: 'Capacity', minWidth: 170 },
-    {
-        id: 'date',
-        label: 'Date',
-        minWidth: 170,
-        align: 'right',
-    },
-    {
-        id: 'time',
-        label: 'Time',
-        minWidth: 170,
-        align: 'right',
-    },
-    {
-        id: 'location',
-        label: 'Location',
-        minWidth: 170,
-        align: 'right',
-    },
-    {
-        id: 'duration',
-        label: 'Duration',
-        minWidth: 170,
-        align: 'right',
-    },
-    {
-        id: 'price',
-        label: 'Price',
-        minWidth: 170,
-        align: 'right',
-    },
-    {
-        id: 'tourGuide',
-        label: 'Tour Guide Name',
-        minWidth: 170,
-        align: 'right',
-    },
-
-    { id: 'editEvent', label: 'Edit Event', minWidth: 50 ,align: 'right'},
-    { id: 'deleteEvent', label: 'Delete Event', minWidth: 50 ,align: 'right',},
-
-];
-
-function createData(name, code, population, size) {
-    const density = population / size;
-    return { name, code, population, size, density };
-}
-
-const rows = [
-    createData('India', 'IN', 1324171354, 3287263),
-    createData('China', 'CN', 1403500365, 9596961),
-    createData('Italy', 'IT', 60483973, 301340),
-    createData('United States', 'US', 327167434, 9833520),
-    createData('Canada', 'CA', 37602103, 9984670),
-    createData('Australia', 'AU', 25475400, 7692024),
-    createData('Germany', 'DE', 83019200, 357578),
-    createData('Ireland', 'IE', 4857000, 70273),
-    createData('Mexico', 'MX', 126577691, 1972550),
-    createData('Japan', 'JP', 126317000, 377973),
-    createData('France', 'FR', 67022000, 640679),
-    createData('United Kingdom', 'GB', 67545757, 242495),
-    createData('Russia', 'RU', 146793744, 17098246),
-    createData('Nigeria', 'NG', 200962417, 923768),
-    createData('Brazil', 'BR', 210147125, 8515767),
-];
-
-const useStyles = makeStyles({
+import React, {Component} from "react";
+import {Grid, Paper} from "@material-ui/core";
+import {CardDemo} from "../CardDemo";
+import {Sidebar} from "primereact/sidebar";
+import {AppBar,Toolbar,IconButton,Typography,InputBase,fade,makeStyles} from "@material-ui/core";
+import AppBarShort from "../AppBarShort";
+import EventCard from "../EventCard";
+const useStyles = makeStyles((theme) => ({
     root: {
+        flexGrow: 1,
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        flexGrow: 1,
+        display: 'none',
+        [theme.breakpoints.up('sm')]: {
+            display: 'block',
+        },
+    },
+    search: {
+        position: 'relative',
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade(theme.palette.common.white, 0.15),
+        '&:hover': {
+            backgroundColor: fade(theme.palette.common.white, 0.25),
+        },
+        marginLeft: 0,
         width: '100%',
-
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(1),
+            width: 'auto',
+        },
     },
-    container: {
-        maxHeight: 440,
+    searchIcon: {
+        padding: theme.spacing(0, 2),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-});
+    inputRoot: {
+        color: 'inherit',
+    },
+    inputInput: {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            width: '12ch',
+            '&:focus': {
+                width: '20ch',
+            },
+        },
+    },
+}));
 
-export default function VisitorTourTable() {
-    const classes = useStyles();
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+export default class  VisitorTourTable extends Component
+{
 
-    let iconMap = {
-        "editEvent" : <CreateIcon/>,
-        "deleteEvent": <DeleteIcon/>,
+    constructor() {
+        super();
+        this.state = {
+            suggestions: null,
+            visibleLeft: false,
+            postArray: [
+                {title: "Event2",start:"Event2 start date",end:"Event end date",location:"event2 location",leftcap:"40"},
+                {title: "Event3",start:"Event3 start date",end:"Event end date",location:"event3 location",leftcap:"205"},
+                {title: "Event4",start:"Event4 start date",end:"Event end date",location:"event4 location",leftcap:"112"},
+                {title: "Event5",start:"Event5 start date",end:"Event end date",location:"event5 location",leftcap:"220"},
+                {title: "Event6",start:"Event6 start date",end:"Event end date",location:"event6 location",leftcap:"120"},
+            ]
+        };
+        this.names = ['Audi', 'BMW', 'Fiat', 'Ford', 'Honda', 'Jaguar', 'Mercedes', 'Renault', 'Volvo'];
     }
-    function createIcon(key,onClick,eventName)
-    {
-        return(
-            <IconButton onClick={() => onClick(eventName)}>
-                {iconMap[key]}
-            </IconButton>
+    suggest(event) {
+        let results = this.names.filter((names) => {
+            return names.toLowerCase().startsWith(event.query.toLowerCase());
+        });
+
+        this.setState({ suggestions: results });
+    }
+    render() {
+        return (
+
+            <div style = {{justifyContent: 'center'}}>
+                <br/>
+                <Grid container spacing = {3}>
+                    {
+                        this.state.postArray.map((post , index) =>
+                            {
+                                return(
+                                    <Grid item xs = {3}>
+                                        <EventCard  title = {post.title}
+                                                    start={ post.start}
+                                                    end={post.end}
+                                                    location={post.location}
+                                                    leftcap={post.leftcap}
+                                                    leftModalButton="Accept"
+                                                    rightModalButton="Decline"
+                                                    down="Join Event"
+                                                    image="/images/t-logo.jpg"
+                                                    />
+                                    </Grid>
+                                )
+                            }
+                        )
+                    }
+                </Grid>
+            </div>
+
         );
     }
-
-
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    };
-
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(+event.target.value);
-        setPage(0);
-    };
-
-    return (
-        <Paper className={classes.root}>
-            <TableContainer className={classes.container}>
-                <Table stickyHeader aria-label="sticky table">
-                    <TableHead>
-                        <TableRow>
-                            {columns.map((column) => (
-                                <TableCell
-                                    key={column.id}
-                                    align={column.align}
-                                    style={{ minWidth: column.minWidth }}
-                                >
-                                    {column.label}
-                                </TableCell>
-                            ))}
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                            return (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                                    {columns.map((column) => {
-                                        let value = row[column.id];
-                                        if(column.id === "editEvent" || column.id === "deleteEvent" || column.id === "participants" ||column.id === "barChart")
-                                        {
-                                            value = createIcon(column.id,column.onClick,row.eventName);
-                                        }
-                                        return (
-                                            <TableCell key={column.id} align={column.align}>
-                                                {column.format && typeof value === 'number' ? column.format(value) : value}
-                                            </TableCell>
-                                        );
-                                    })}
-                                </TableRow>
-                            );
-                        })}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[10, 25, 100]}
-                component="div"
-                count={rows.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onChangePage={handleChangePage}
-                onChangeRowsPerPage={handleChangeRowsPerPage}
-            />
-        </Paper>
-    );
 }

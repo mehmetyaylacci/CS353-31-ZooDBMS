@@ -49,7 +49,7 @@ export default function ImgMediaCard(props) {
                     leftcap ={props.leftcap}
                     show={modalShow}
                     leftModalButton={props.leftModalButton}
-                    rightModalButton={props.lrightModalButton}
+                    rightModalButton={props.rightModalButton}
                     onHide={() => setModalShow(false)}
                 />
             </CardActions>

@@ -23,7 +23,7 @@ export default function EventDetailModal(props)  {
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>{props.leftModalButton}</Button>
-                <Button onClick={props.onHide}>{props.leftModalButton}</Button>
+                <Button onClick={props.onHide}>{props.rightModalButton}</Button>
             </Modal.Footer>
         </Modal>
     );

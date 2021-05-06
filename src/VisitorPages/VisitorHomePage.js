@@ -158,7 +158,7 @@ function VisitorHomePage() {
                     >
 
                         <TabPanel value={value} index={0} dir={theme.direction}>
-                            <h1>Group Tours</h1>
+                            {/* <h1>Group Tours</h1> */}
                             <VisitorTourTable></VisitorTourTable>
                         </TabPanel>
                         {/* <TabPanel value={value} index={1} dir={theme.direction}>
@@ -167,7 +167,7 @@ function VisitorHomePage() {
 
                         </TabPanel> */}
                         <TabPanel value={value} index={1} dir={theme.direction}>
-                            <h1>Conservational Organizations</h1>
+                            {/* <h1>Conservational Organizations</h1> */}
                             <VisitorOrganizationTable></VisitorOrganizationTable>
                         </TabPanel>
 
