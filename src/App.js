@@ -8,6 +8,7 @@ import SignUp from "./SignUp";
 import RestaurantPage from "./RestaurantPage/RestaurantPage"
 import VisitorHomePage from "./VisitorPages/VisitorHomePage"
 import { BrowserRouter as Router, Route, Link,Switch } from 'react-router-dom';
+import GiftShopPage from './GiftShopPage/GiftShopPage';
 
 
 /*
@@ -44,7 +45,7 @@ function Routes()
           <Route path = "/profile" exact component={UserProfile}></Route>
           <Route path = "/restaurant" exact component={RestaurantPage}></Route>
           <Route path = "/visitorhomepage" exact component={VisitorHomePage}></Route>
-
+          <Route path = "/giftshop" exact component={GiftShopPage}></Route>
         </Switch>
       </Router>
   );
