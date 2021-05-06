@@ -32,7 +32,7 @@ export default function SignUp()
                 </Link>
                 </span>;
     return(
-        <div style={{height : '110vh', width : '100%',backgroundImage: 'linear-gradient(to bottom right,#8C4FB7,#3834DE)'}}>
+        <div style={{height : '130vh', width : '100%',backgroundImage: 'linear-gradient(to bottom right,#8C4FB7,#3834DE)'}}>
             <Paper style={{backgroundImage: 'linear-gradient(to bottom right,#8C4FB7,#3834DE)'}}>
                 <Card class="rounded-card"  header={header} footer={footer} style={{
                     position: 'absolute', left: '50%', top: '50%',
@@ -42,7 +42,7 @@ export default function SignUp()
                     justifyContent: "center",
                     borderRadius: '20px'
                 }}>
-                    <div className="p-fluid">
+                    <div style = {{marginTop : '10em'}} className="p-fluid">
                         <br/>
                         <div className="p-fluid p-formgrid p-grid">
                             <div className="p-field p-col-12 p-md-6">
@@ -71,28 +71,39 @@ export default function SignUp()
                         <div className="p-field p-grid">
                             <label htmlFor="lastname4" className="p-col-12 p-md-2">Username</label>
                             <div className="p-col-12 p-md-10">
-                                <InputText id="lastname4" type="username"/>
+                                <InputText id="lastname4" type="text"/>
                             </div>
                         </div>
                         <br/>
                         <div className="p-field p-grid">
                             <label htmlFor="lastname4" className="p-col-12 p-md-2">Password</label>
                             <div className="p-col-12 p-md-10">
-                                <InputText id="lastname4" type="password"/>
+                                <InputText id="lastname4" type="text"/>
                             </div>
                         </div>
                         <br/>
                         <div className="p-field p-grid">
                             <label htmlFor="lastname4" className="p-col-12 p-md-2">Password Confirm</label>
                             <div className="p-col-12 p-md-10">
-                                <InputText id="lastname4" type="password"/>
+                                <InputText id="lastname4" type="text"/>
                             </div>
                         </div>
                         <div className="p-field p-grid">
-                            <label htmlFor="lastname4" className="p-col-12 p-md-2">Click to continue.</label>
+                            <label htmlFor="lastname4" className="p-col-12 p-md-2">Card Number</label>
                             <div className="p-col-12 p-md-10">
-                                <InputText id="lastname4" type="password"/>
+                                <InputText id="lastname4" type="text"/>
                             </div>
+                        </div>
+                        <div className="p-field p-grid">
+                            <label htmlFor="lastname4" className="p-col-12 p-md-2">Amount of Money to Take</label>
+                            <div className="p-col-12 p-md-10">
+                                <InputText id="lastname4" type="text"/>
+                            </div>
+                        </div>
+                        <div className="p-field p-grid">
+                            <Link to="/login">
+                                <Button variant = "contained" color = "primary">Signup</Button>
+                            </Link>
                         </div>
                     </div>
 

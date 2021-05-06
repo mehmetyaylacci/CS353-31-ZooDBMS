@@ -22,9 +22,10 @@ import {Button} from "@material-ui/core";
 import PlusIcon from  "@material-ui/icons/Add";
 
 import VisitorSideBar from "./VisitorSideBar";
-import TourTable from "./VisitorTourTable";
+import VisitorTourTable from "./VisitorTourTable";
 // import EducationalTable from "./EducationalTable";
-import OrganizationTable from "./VisitorOrganizationTable";
+import VisitorOrganizationTable from "./VisitorOrganizationTable";
+// import VisitorEducationalTour from "./VisitorEducationalTour";
 import { LocalDiningOutlined } from '@material-ui/icons';
 // import JoinTourModal from "./JoinTourModal";
 // import DonationModal from "./DonationModal";
