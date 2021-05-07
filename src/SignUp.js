@@ -102,7 +102,7 @@ export default function SignUp()
                         </div>
                         <div className="p-field p-grid">
                             <Link to="/login">
-                                <Button variant = "contained" color = "primary">Signup</Button>
+                                <Button variant = "contained" color = "primary" label="Signup"></Button>
                             </Link>
                         </div>
                     </div>

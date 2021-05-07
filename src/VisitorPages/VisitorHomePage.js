@@ -106,31 +106,37 @@ function VisitorHomePage() {
 
             <div >
 
-            <Button variant = "contained"
-                        color = "primary"
-                        style = {{float:"right",marginRight:"3em"}}
-                        onClick = {logout()}
-                >Logout</Button>
+            <Link to="/login">
+                <Button variant = "contained"
+                            color = "primary"
+                            style = {{float:"right",marginRight:"3em"}}
+                            onClick = {logout()}
+                            label="Logout"
+                    ></Button>
+            </Link>
 
             <Link to="/restaurant">
                 <Button variant = "contained"
                         color = "primary"
                         style = {{float:"right",marginRight:"3em"}}
-                >Restaurant</Button>
+                        label="Restaurant"
+                ></Button>
             </Link>
 
             <Link to="/giftshop">
                 <Button variant = "contained"
                         color = "primary"
                         style = {{float:"right",marginRight:"3em"}}
-                >Gift Shop</Button>
+                        label="Gift Shop"
+                ></Button>
             </Link>
 
             <Link to="/visitorprofile">
                 <Button variant = "contained"
                         color = "primary"
                         style = {{float:"right",marginRight:"3em"}}
-                >Profile</Button>
+                        label="Profile"
+                ></Button>
             </Link>
 
             
