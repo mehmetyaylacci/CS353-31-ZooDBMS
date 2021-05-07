@@ -16,7 +16,9 @@ import VisitorSideBar from "./VisitorSideBar";
 import VisitorTourTable from "./VisitorTourTable";
 // import EducationalTable from "./EducationalTable";
 import VisitorOrganizationTable from "./VisitorOrganizationTable";
-// import VisitorEducationalTour from "./VisitorEducationalTour";
+import VisitorEducationalTable from "./VisitorEducationalTable";
+import {Button} from "@material-ui/core";
+import {Link} from "react-router-dom";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -98,6 +100,11 @@ function VisitorUserProfile() {
                      </div>
                  </div>
                     <div >
+                        <div className="p-field p-grid">
+                            <Link to="/visitormoney">
+                                <Button variant = "contained" color = "primary">Add Money</Button>
+                            </Link>
+                        </div>
                         <Tabs
                             value={value}
                             onChange={handleChange}
@@ -121,7 +128,7 @@ function VisitorUserProfile() {
                         </TabPanel>
                         <TabPanel value={value} index={1} dir={theme.direction}>
                             {/* <h1>Educational Programs</h1> */}
-                            <EducationalTable></EducationalTable>
+                            <VisitorEducationalTable></VisitorEducationalTable>
 
                         </TabPanel>
 

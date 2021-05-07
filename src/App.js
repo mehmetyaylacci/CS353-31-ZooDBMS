@@ -10,6 +10,7 @@ import VisitorHomePage from "./VisitorPages/VisitorHomePage"
 import { BrowserRouter as Router, Route, Link,Switch } from 'react-router-dom';
 import GiftShopPage from './GiftShopPage/GiftShopPage';
 import VisitorUserProfile from './VisitorPages/VisitorUserProfile';
+import VisitorMoney from './VisitorPages/VisitorMoney';
 
 
 /*
@@ -48,6 +49,7 @@ function Routes()
           <Route path = "/visitorhomepage" exact component={VisitorHomePage}></Route>
           <Route path = "/giftshop" exact component={GiftShopPage}></Route>
           <Route path = "/visitorprofile" exact component={VisitorUserProfile}></Route>
+          <Route path = "/visitormoney" exact component={VisitorMoney}></Route>
 
         </Switch>
       </Router>
